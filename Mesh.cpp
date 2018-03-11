@@ -20,8 +20,7 @@ void Mesh::CreateCube(float	fSize)//Vẽ hình lập phương
 }
 void Mesh::CreateCuboid(float fSizeX, float fSizeY,float fSizeZ){
 	
-	int i;
-
+	int arr[4];
 	numVerts = 8;
 	pt = new Point3[numVerts];
 	pt[0].set(-fSizeX, fSizeY, fSizeZ);
@@ -33,64 +32,27 @@ void Mesh::CreateCuboid(float fSizeX, float fSizeY,float fSizeZ){
 	pt[6].set(fSizeX, -fSizeY, -fSizeZ);
 	pt[7].set(-fSizeX, -fSizeY, -fSizeZ);
 
-
 	numFaces = 6;
 	face = new Face[numFaces];
 
 	//Left face
-
-	
-	//setUpFace(0, new int[1, 5, 6, 2], 4);
-
+	arr[0] = 1; arr[1] = 5; arr[2] = 6; arr[3] = 2;
+	setUpFace(0, arr, 4);
 	//Right face
-	face[1].nVerts = 4;
-	face[1].vert = new VertexID[face[1].nVerts];
-	face[1].vert[0].vertIndex = 0;
-	face[1].vert[1].vertIndex = 3;
-	face[1].vert[2].vertIndex = 7;
-	face[1].vert[3].vertIndex = 4;
-	for (i = 0; i < face[1].nVerts; i++)
-		face[1].vert[i].colorIndex = 1;
-
+	arr[0] = 0; arr[1] = 3; arr[2] = 7; arr[3] = 4;
+	setUpFace(1, arr, 4);
 	//top face
-	face[2].nVerts = 4;
-	face[2].vert = new VertexID[face[2].nVerts];
-	face[2].vert[0].vertIndex = 0;
-	face[2].vert[1].vertIndex = 1;
-	face[2].vert[2].vertIndex = 2;
-	face[2].vert[3].vertIndex = 3;
-	for (i = 0; i < face[2].nVerts; i++)
-		face[2].vert[i].colorIndex = 2;
-
+	arr[0] = 0; arr[1] = 1; arr[2] = 2; arr[3] = 3;
+	setUpFace(2, arr, 4);
 	//bottom face
-	face[3].nVerts = 4;
-	face[3].vert = new VertexID[face[3].nVerts];
-	face[3].vert[0].vertIndex = 7;
-	face[3].vert[1].vertIndex = 6;
-	face[3].vert[2].vertIndex = 5;
-	face[3].vert[3].vertIndex = 4;
-	for (i = 0; i < face[3].nVerts; i++)
-		face[3].vert[i].colorIndex = 3;
-
+	arr[0] = 7; arr[1] = 6; arr[2] = 5; arr[3] = 4;
+	setUpFace(3, arr, 4);
 	//near face
-	face[4].nVerts = 4;
-	face[4].vert = new VertexID[face[4].nVerts];
-	face[4].vert[0].vertIndex = 4;
-	face[4].vert[1].vertIndex = 5;
-	face[4].vert[2].vertIndex = 1;
-	face[4].vert[3].vertIndex = 0;
-	for (i = 0; i < face[4].nVerts; i++)
-		face[4].vert[i].colorIndex = 4;
-
+	arr[0] = 4; arr[1] = 5; arr[2] = 1; arr[3] = 0;
+	setUpFace(4, arr, 4);
 	//Far face
-	face[5].nVerts = 4;
-	face[5].vert = new VertexID[face[5].nVerts];
-	face[5].vert[0].vertIndex = 3;
-	face[5].vert[1].vertIndex = 2;
-	face[5].vert[2].vertIndex = 6;
-	face[5].vert[3].vertIndex = 7;
-	for (i = 0; i < face[5].nVerts; i++)
-		face[5].vert[i].colorIndex = 5;
+	arr[0] = 3; arr[1] = 2; arr[2] = 6; arr[3] = 7;
+	setUpFace(5, arr, 4);
 		
 }
 void Mesh::setUpFace(int indexFace, int arrVertex[], int numberVerts) {//size=nVerts
@@ -104,45 +66,19 @@ void Mesh::setUpFace(int indexFace, int arrVertex[], int numberVerts) {//size=nV
 
 void Mesh::supportCreateCuboWithThick(int i) {
 	int j;
+	int arr[4];
 	//Mặt trước
-	face[0 + i].nVerts = 4;
-	face[0 + i].vert = new VertexID[face[0 + i].nVerts];
-	face[0 + i].vert[0].vertIndex = 1 + i;
-	face[0 + i].vert[1].vertIndex = 5 + i;
-	face[0 + i].vert[2].vertIndex = 6 + i;
-	face[0 + i].vert[3].vertIndex = 2 + i;
-	for (j = 0; j < face[0 + i].nVerts; j++)
-		face[0 + i].vert[j].colorIndex = 0;
-
+	arr[0] = 1+i; arr[1] = 5+i; arr[2] = 6+i; arr[3] = 2+i;
+	setUpFace(0+i, arr, 4);
 	//Mặt sau
-	face[1 + i].nVerts = 4;
-	face[1 + i].vert = new VertexID[face[1 + i].nVerts];
-	face[1 + i].vert[0].vertIndex = 0 + i;
-	face[1 + i].vert[1].vertIndex = 3 + i;
-	face[1 + i].vert[2].vertIndex = 7 + i;
-	face[1 + i].vert[3].vertIndex = 4 + i;
-	for (j = 0; j < face[1 + i].nVerts; j++)
-		face[1 + i].vert[j].colorIndex = 1;
-
+	arr[0] = 0+i; arr[1] = 3+i; arr[2] = 7+i; arr[3] = 4+i;
+	setUpFace(1+i, arr, 4);
 	//Mặt trái
-	face[2+i].nVerts = 4;
-	face[2+i].vert = new VertexID[face[2 + i].nVerts];
-	face[2+i].vert[0].vertIndex = 4 + i;
-	face[2+i].vert[1].vertIndex = 5 + i;
-	face[2+i].vert[2].vertIndex = 1 + i;
-	face[2+i].vert[3].vertIndex = 0 + i;
-	for (j = 0; j < face[2 + i].nVerts; j++)
-		face[2+i].vert[j].colorIndex = 4;
-
+	arr[0] = 4+i; arr[1] = 5+i; arr[2] = 1+i; arr[3] = 0+i;
+	setUpFace(2+i, arr, 4);
 	//Mặt phải
-	face[3 + i].nVerts = 4;
-	face[3 + i].vert = new VertexID[face[3].nVerts];
-	face[3 + i].vert[0].vertIndex = 3 + i;
-	face[3 + i].vert[1].vertIndex = 2 + i;
-	face[3 + i].vert[2].vertIndex = 6 + i;
-	face[3 + i].vert[3].vertIndex = 7 + i;
-	for (j = 0; j < face[3+i].nVerts; j++)
-		face[3 + i].vert[j].colorIndex = 5;
+	arr[0] = 3+i; arr[1] = 2+i; arr[2] = 6+i; arr[3] = 7+i;
+	setUpFace(3+i, arr, 4);
 }
 void Mesh::CreateCuboWithThick(float fSizeX, float fSizeY, float fSizeZ,float thick) {
 	
@@ -162,7 +98,6 @@ void Mesh::CreateCuboWithThick(float fSizeX, float fSizeY, float fSizeZ,float th
 	pt[6].set(fSizeX, -fSizeY, -fSizeZ);
 	pt[7].set(-fSizeX, -fSizeY, -fSizeZ);
 
-
 	pt[8].set(-fSizeXthick, fSizeYthick, fSizeZthick);
 	pt[9].set(fSizeXthick, fSizeYthick, fSizeZthick);
 	pt[10].set(fSizeXthick, fSizeYthick, -fSizeZthick);
@@ -172,44 +107,22 @@ void Mesh::CreateCuboWithThick(float fSizeX, float fSizeY, float fSizeZ,float th
 	pt[14].set(fSizeXthick, -fSizeYthick, -fSizeZthick);
 	pt[15].set(-fSizeXthick, -fSizeYthick, -fSizeZthick);
 
-
 	numFaces = 16;
 	face = new Face[numFaces];
 
 	supportCreateCuboWithThick(0);
 	supportCreateCuboWithThick(8);
-	for (int index=0;index<3;index++)
-	{
-		DrawThick(4 + index, index);
-		DrawThick(12+index, 4+index);
+	int arr[4];
+	for (int index=0;index<3;index++){
+		arr[0] = 0+index; arr[1] = 8 + index; arr[2] = 9 + index; arr[3] = 1 + index;
+		setUpFace(4+index, arr, 4);
+
+		arr[0] = 0+4 + index; arr[1] = 8+4 + index; arr[2] = 9+4 + index; arr[3] = 1+4 + index;
+		setUpFace(12 + index, arr, 4);
 	}
-	DrawThickBack(4 + 3, 3, 0);
-	
-	//DrawThickBack(12 + 3, 3, 3);
-	
+	arr[0] = 0 +3; arr[1] = 8 + 3; arr[2] =0+8; arr[3] = 0;
+	setUpFace(4+3, arr, 4);	
 }
-
-void Mesh::DrawThick(int indexface,int delta){
-	face[indexface].nVerts = 4;
-	face[indexface].vert = new VertexID[face[indexface].nVerts];
-	face[indexface].vert[0].vertIndex = 0+delta;
-	face[indexface].vert[1].vertIndex = 8+delta;
-	face[indexface].vert[2].vertIndex = 9+delta;
-	face[indexface].vert[3].vertIndex = 1+delta;
-	for (int i = 0; i < face[indexface].nVerts; i++)
-		face[indexface].vert[i].colorIndex = 0;
-}
-void Mesh::DrawThickBack(int indexface, int delta,int flat) {
-	face[indexface].nVerts = 4;
-	face[indexface].vert = new VertexID[face[indexface].nVerts];
-	face[indexface].vert[0].vertIndex = 0 + delta;
-	face[indexface].vert[1].vertIndex = 8 + delta;
-	face[indexface].vert[2].vertIndex = flat+8;
-	face[indexface].vert[3].vertIndex = flat;
-	for (int i = 0; i < face[indexface].nVerts; i++)
-		face[indexface].vert[i].colorIndex = 0;
-}
-
 
 void Mesh::CreateCylinde(float radius, float height, float rotation) {
 	Cylinder(radius, height, rotation);
@@ -223,7 +136,6 @@ void Mesh::CreateCylinde(float radius, float height, float rotation) {
 	AroundCylinder();
 }
 
-
 void Mesh::Cylinder(float radius, float height, float rotation) {
 	numVerts = 360 / rotation*2+2;
 	InitialPi(pt, radius, height, rotation);
@@ -234,31 +146,18 @@ void Mesh::Cylinder(float radius, float height, float rotation) {
 
 void Mesh::AroundCylinder() {
 	int i,j;
-	for (j = 1; j <numFaces - numVerts + 3; j++)
-	{
-		face[j + numVerts - 3].nVerts = 4;
-		face[j + numVerts - 3].vert = new VertexID[4];
-		face[j + numVerts - 3].vert[0].vertIndex = j * 2 + 0;//0 2
-		face[j + numVerts - 3].vert[1].vertIndex = j * 2 + 2;//1 4
-		face[j + numVerts - 3].vert[2].vertIndex = j * 2 + 3;//2 5
-		face[j + numVerts - 3].vert[3].vertIndex = j * 2 + 1;//3 1
-		for (i = 0; i < 4; i++) {
-			face[j + numVerts - 3].vert[i].colorIndex = j%COLORNUM;
-		}
+	int arr[4];
+	for (j = 1; j <numFaces - numVerts + 3; j++){
+		arr[0] = j * 2 + 0; arr[1] = j * 2 + 2; arr[2] = j * 2 + 3; arr[3] = j * 2 + 1;
+		setUpFace(j + numVerts - 3, arr, 4);
 	}
 	face[j + numVerts - 4].vert[1].vertIndex = 2;
 	face[j + numVerts - 4].vert[2].vertIndex = 3;
 }
 
 void Mesh::TopDownCylinder(int index,int center,int vertex) {
-	face[index].nVerts = 3;
-	face[index].vert = new VertexID[face[index].nVerts];
-	face[index].vert[0].vertIndex = center;
-	face[index].vert[0].colorIndex = index %COLORNUM;
-	face[index].vert[1].vertIndex = vertex;
-	face[index].vert[1].colorIndex = index %COLORNUM;
-	face[index].vert[2].vertIndex = vertex+2;
-	face[index].vert[2].colorIndex = index %COLORNUM;
+	int arr[3] = {center,vertex,vertex+2};
+	setUpFace(index, arr, 3);
 }
 
 
@@ -379,6 +278,7 @@ void InitialPi(Point3* &pt,float radius,float height,float rotation) {
 void Mesh::CreateTetrahedron()//Vẽ hình tứ diện
 {
 	int i;
+	int arr[3];
 	numVerts=4;
 	pt = new Point3[numVerts];
 	pt[0].set(0, 0, 0);
@@ -389,40 +289,17 @@ void Mesh::CreateTetrahedron()//Vẽ hình tứ diện
 	numFaces= 4;
 	face = new Face[numFaces];
 
-	face[0].nVerts = 3;
-	face[0].vert = new VertexID[face[0].nVerts];
-	face[0].vert[0].vertIndex = 1;
-	face[0].vert[1].vertIndex = 2;
-	face[0].vert[2].vertIndex = 3;
-	for(i = 0; i<face[0].nVerts ; i++)
-		face[0].vert[i].colorIndex = 0;
-	
+	arr[0] = 1, arr[1] = 2; arr[2] = 3;
+	setUpFace(0, arr, 3);
 
-	face[1].nVerts = 3;
-	face[1].vert = new VertexID[face[1].nVerts];
-	face[1].vert[0].vertIndex = 0;	
-	face[1].vert[1].vertIndex = 2;
-	face[1].vert[2].vertIndex = 1;
-	for(i = 0; i<face[1].nVerts ; i++)
-		face[1].vert[i].colorIndex = 1;
+	arr[0] = 0, arr[1] = 2; arr[2] = 1;
+	setUpFace(1, arr, 3);
 
-	
-	face[2].nVerts = 3;
-	face[2].vert = new VertexID[face[2].nVerts];
-	face[2].vert[0].vertIndex = 0;
-	face[2].vert[1].vertIndex = 3;
-	face[2].vert[2].vertIndex = 2;
-	for(i = 0; i<face[2].nVerts ; i++)
-		face[2].vert[i].colorIndex = 2;
+	arr[0] = 0, arr[1] = 3; arr[2] = 2;
+	setUpFace(1, arr, 3);
 
-
-	face[3].nVerts = 3;
-	face[3].vert = new VertexID[face[3].nVerts];
-	face[3].vert[0].vertIndex = 1;
-	face[3].vert[1].vertIndex = 3;
-	face[3].vert[2].vertIndex = 0;
-	for(i = 0; i<face[3].nVerts ; i++)
-		face[3].vert[i].colorIndex = 3;
+	arr[0] = 1, arr[1] = 3; arr[2] = 0;
+	setUpFace(1, arr, 3);
 }
 
 

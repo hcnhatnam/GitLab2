@@ -71,8 +71,6 @@ public:
 	void CreateCuboid(float fSizeX, float fSizeY, float fSizeZ);
 	void CreateCuboWithThick(float fSizeX, float fSizeY, float fSizeZ, float thick);
 	void supportCreateCuboWithThick(int i);
-	void DrawThick(int indexface,int delta);
-	void DrawThickBack(int indexface, int delta, int flat);
 	void CreateCylinde(float radius, float height, float rotation);
 	void Cylinder(float radius, float height, float rotation);
 	void TopDownCylinder(int index, int center,int vertex);

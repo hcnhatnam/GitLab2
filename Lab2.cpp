@@ -107,7 +107,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "2. Cube" << endl;
 	cout << "3. Cubeid" << endl;
 	cout << "4. CubeWithThick" << endl;
-	cout << "5. CubeWithThick" << endl;
+	cout << "5. Cylinder" << endl;
 	cout << "6. Ovan" << endl;
 	cout << "7. OvanAdvan" << endl;
 	cout << "Input the choice: " << endl;
@@ -122,8 +122,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	tetrahedron.CreateTetrahedron();
 	
 	cube.CreateCube(1);
-	cubeid.CreateCuboid(2, 1, 1);
-	CubewithThick.CreateCuboWithThick(2, 1.5, 2, 0.7);
+	cubeid.CreateCuboid(2, 1.5, 1);
+	CubewithThick.CreateCuboWithThick(3, 1.5, 1.5, 0.7);
 	Cylinder.CreateCylinde(2, 5, 18);
 	Ovan.CreateOvan(2,2,6 );
 	OvanAdvan.CreateOvanAdvan(2, 1, 2, 6);
